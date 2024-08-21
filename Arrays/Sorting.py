@@ -50,9 +50,7 @@ def quick_sort(arr):
 
 
 ### Merge Sort
-# Merge sort is a divide-and-conquer algorithm that was invented by John von Neumann in
-# 1945. It works by splitting the input list into two halves, recursively sorting each half
-# and then merging the two sorted halves into a single sorted list.
+# Merge sort is a divide-and-conquer algorithm. It works by splitting the input list into two halves, recursively sorting each half and then merging the two sorted halves into a single sorted list.
 def merge_sort(arr):
     if len(arr) > 1:
         mid = len(arr)//2
