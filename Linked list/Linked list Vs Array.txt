@@ -1,0 +1,67 @@
+Comparison of Linked List vs Arrays
+
+Array:
+1.Data Structure: Contiguous
+2.Memory Allocation: Typically allocated to the whole array
+3.Insertion/Deletion: Inefficient
+4.Access: Random
+
+
+Linked List:
+1.Data Structure: Non-contiguous
+2.Memory Allocation: Typically allocated one by one to individual elements
+3.Insertion/Deletion: Efficient
+4.Access: Sequential
+
+
+What is a Linked List?
+A linked list is a linear data structure that consists of a series of nodes connected by pointers (in C or C++) 
+or references (in Java, Python and JavaScript). Each node contains data and a pointer/reference to the next node in 
+the list. Unlike arrays, linked lists allow for efficient insertion or removal of elements from any position in 
+the list, as the nodes are not stored contiguously in memory.
+
+Exmaple:  https://media.geeksforgeeks.org/wp-content/uploads/20240410135517/linked-list.webp
+
+
+
+            Basic Concepts
+--> Node: The basic unit of a linked list. Each node contains:
+--> Data: The value or information stored in the node.
+--> Pointer/Reference: A link to the next node in the list.
+--> Head: The first node in a linked list. It's a reference to the beginning of the list.
+
+        Types of Linked Lists
+1.Singly Linked List: Each node points only to the next node.
+    Example: A -> B -> C -> D
+
+2.Doubly Linked List: Each node has two pointers: one to the next node and one to the previous node.
+    Example: A <-> B <-> C <-> D
+
+3.Circular Linked List: The last node points back to the first node, forming a circle.
+    Singly Circular: A -> B -> C -> D -> A
+    Doubly Circular: A <-> B <-> C <-> D <-> A
+
+
+            Basic Operations
+--> Insertion: Adding a new node to the list.
+    At the beginning
+    At the end
+    After a specific node
+
+--> Deletion: Removing a node from the list.
+    From the beginning
+    From the end
+    A specific node
+
+--> Traversal: Visiting each node in the list to read or modify data.
+
+--> Search: Finding a node with a specific value.
+
+        
+            Advantages
+1.Dynamic Size: Can grow or shrink in size dynamically.
+2.Ease of Insertion/Deletion: Can be easier to insert or delete elements compared to arrays, especially when the position is known.
+
+            Disadvantages
+1.Memory Usage: Each node requires extra memory for the pointer/reference.
+2.Random Access: Slower than arrays because you need to traverse nodes sequentially to access an element.
