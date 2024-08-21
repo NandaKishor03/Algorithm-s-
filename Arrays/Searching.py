@@ -28,6 +28,5 @@ def binary_search(arr, target):
             high = mid - 1
     return -1  # Return -1 if the target element is not found
 
-
-
-### Modified Binary Search
+        
+    
