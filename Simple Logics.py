@@ -63,11 +63,15 @@ def mirror(root):
 
 
 ### If you want to sort the array for every iteration of the loop then use "HEAPQ"
-import heapq
-arr = [4,3,2,5]
-arr = [4,3,2,5,1,9,8,0]
-heapq.heapify(arr)
-while len(arr) > 0:
-    print(heapq.heappop(arr))
-
+# Example - Minimum cost of ropes
+def minCost(arr):
+    heapq.heapify(arr)
+    count = 0
+    while (len(arr) > 1):
+        first = heapq.heappop(arr)
+        second = heapq.heappop(arr)    
+        res = first + second        
+        count += res
+        heapq.heappush(arr,res)            
+    return count 
 
