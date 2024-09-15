@@ -120,3 +120,75 @@
 #             if all(grid[i][j] > neighbor for neighbor in neighbors):
 #                 count += 1
 #     return count
+
+
+### Mirror Tree Logic   ----  GFG
+# def Mirror(self,root):
+#         if root is None:
+#             return None
+#         root.left, root.right = root.right, root.left
+#         self.mirror(root.left)
+#         self.mirror(root.right)
+#         return root
+
+
+
+### XOR Queries of a Subarray  ----- Leetcode 1310
+#  Brute-force
+# arr = [1,3,4,8]
+# queries = [[0,1],[1,2],[0,3],[3,3]]
+# lst = []
+# for x in queries:
+#     c = 0
+#     for i  in range(x[0],x[1]+1):
+#         c ^= arr[i]
+#     lst.append(c)
+# return lst
+
+#  Optimized 
+# prefix_xor = [0] * (len(arr) + 1)
+# for i in range(len(arr)):
+#         prefix_xor[i + 1] = prefix_xor[i] ^ arr[i]
+# result = [prefix_xor[r + 1] ^ prefix_xor[l] for l, r in queries]
+#         print(result)
+
+
+
+### Alernative positive and negative Number  ----- GFG
+# arr = [9, 4, -2, -1, 5, 0, -5, -3, 2
+# arr = [-5, -2, 5, 2, 4, 7, 1, 8, 0, -8]
+# pos = [num for num in arr if num >= 0]
+# neg = [num for num in arr if num < 0]
+# result = []
+# pos_index, neg_index = 0, 0
+# while pos_index < len(pos) and neg_index < len(neg):
+#     result.append(pos[pos_index])
+#     pos_index += 1
+#     result.append(neg[neg_index])
+#     neg_index += 1
+# result.extend(pos[pos_index:])
+# result.extend(neg[neg_index:])
+# print(result)
+
+
+
+### In-Place Binary Tree to Double Linked List Convertion  -----  GFG
+# def bToDLL(self, root):
+#     prev = None
+#     head = None
+#     def inorder(node):
+#         nonlocal prev, head
+#         if node:
+#             inorder(node.left)
+#             if prev is None:
+#                 head = node
+#             else:
+#                 node.left = prev
+#                 prev.right = node
+#             prev = node
+#             inorder(node.right)
+#     inorder(root)
+#     return head
+
+
+

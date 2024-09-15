@@ -79,13 +79,13 @@ def merge_sort(arr):
 
 
 
-arr = [64, 34, 25, 12, 22, 11, 90]
-print("Original array:", arr)
-print("Sorted array (Bubble Sort):", bubble_sort(arr[:]))
-print("Sorted array (Selection Sort):", selection_sort(arr[:]))
-print("Sorted array (Insertion Sort):", insertion_sort(arr[:]))
-print("Sorted array (Merge Sort):", merge_sort(arr[:]))
-print("Sorted array (Quick Sort):", quick_sort(arr[:]))
+# arr = [64, 34, 25, 12, 22, 11, 90]
+# print("Original array:", arr)
+# print("Sorted array (Bubble Sort):", bubble_sort(arr[:]))
+# print("Sorted array (Selection Sort):", selection_sort(arr[:]))
+# print("Sorted array (Insertion Sort):", insertion_sort(arr[:]))
+# print("Sorted array (Merge Sort):", merge_sort(arr[:]))
+# print("Sorted array (Quick Sort):", quick_sort(arr[:]))
 
 
 ### Output
@@ -95,3 +95,99 @@ print("Sorted array (Quick Sort):", quick_sort(arr[:]))
 # Sorted array (Insertion Sort): [11, 12, 22, 25, 34, 64, 90]
 # Sorted array (Merge Sort): [11, 12, 22, 25, 34, 64, 90]
 # Sorted array (Quick Sort): [11, 12, 22, 25, 34, 64, 90]
+
+
+
+
+### Heap sort
+#The heapq module in Python provides an implementation of the heap queue algorithm, also known as a priority queue algorithm. 
+#Heap sort is a comparison-based sorting technique based on a binary heap data structure. 
+# It is similar to the selection sort where we first find the maximum element and place the maximum element at the end. 
+# It supports min-heaps by default but can be adapted for max-heaps using negative values.
+
+# Heapq Methods:
+# heapify: Turns a list into a heap in-place.
+# heappush: Adds an item to the heap.
+# heappop: Removes and returns the smallest item from the heap.
+# heappushpop: Adds an item and then removes the smallest item.
+# heapreplace: Removes the smallest item and then adds a new item.
+# nlargest: Retrieves the n largest elements from an iterable.
+# nsmallest: Retrieves the n smallest elements from an iterable.
+
+# MIN-HEAPQ
+import heapq
+def main():
+    arr = [4, 3, 2, 5, 1, 9, 8, 0]
+
+    # Convert the array into a min-heap
+    heapq.heapify(arr)
+    print("Min-Heap:", arr)
+
+    # Push a new item onto the heap
+    new_item = -1
+    heapq.heappush(arr, new_item)
+    print(f"Min-Heap after adding {new_item}:", arr)
+
+    # Pop the smallest item from the heap
+    smallest = heapq.heappop(arr)
+    print(f"Smallest item popped: {smallest}")
+    print("Min-Heap after popping the smallest item:", arr)
+
+    # Example of heapreplace (pop and push in one operation)
+    heapq.heapreplace(arr, 10)
+    print("Min-Heap after heapreplace with 10:", arr)
+
+    # Example of heappushpop (push and pop in one operation)
+    pushed_and_popped = heapq.heappushpop(arr, 7)
+    print(f"Pushed 7 and popped {pushed_and_popped}")
+    print("Min-Heap after heappushpop:", arr)
+
+    # Finding n smallest elements
+    smallest_elements = heapq.nsmallest(3, arr)
+    print("Three smallest elements:", smallest_elements)
+
+    # Finding n largest elements
+    largest_elements = heapq.nlargest(3, arr)
+    print("Three largest elements:", largest_elements)
+
+# if __name__ == "__main__":
+    # main()
+
+
+
+#MAX HEAPQ
+import heapq
+def pop_max_elements(neg_arr):
+    max_elements = []
+    while neg_arr:
+        max_elements.append(-heapq.heappop(neg_arr))
+    print(max_elements)
+
+arr = [4,3,2,5,1,9,8,0]
+neg_arr = [-x for x in arr]
+heapq.heapify(neg_arr)
+pop_max_elements(neg_arr)
+
+
+### If you want to sort the array for every iteration of the loop then use "HEAPQ"
+# import heapq
+# # arr = [4,3,2,5]
+# arr = [4,3,2,5,1,9,8,0]
+# heapq.heapify(arr)
+# while len(arr) > 0:
+#     print(heapq.heappop(arr))   OUTPUT print the elements samllest to largest
+
+
+# Example for heapq  -----  Minimum cost of the ropes
+def minCost(arr):
+    heapq.heapify(arr)
+    count = 0
+    while (len(arr) > 1):
+        first = heapq.heappop(arr)
+        second = heapq.heappop(arr)    
+        res = first + second        
+        count += res
+        heapq.heappush(arr,res)            
+    return count 
+arr = [4,3,2,5]
+# print(minCost(arr))
