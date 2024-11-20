@@ -75,3 +75,92 @@ def minCost(arr):
         heapq.heappush(arr,res)            
     return count 
 
+
+### Subsets of the Array   
+# a = [1,3,2]     -----   [[], [1], [3], [1, 3], [2], [1, 2], [3, 2], [1, 3, 2]]
+# a = [1,2,3,4]    -----   [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3], [4], [1, 4], [2, 4], [1, 2, 4], [3, 4], [1, 3, 4], [2, 3, 4], [1, 2, 3, 4]]
+a = [1]
+n = len(a)
+subset = []
+for i in range(0,(1<<n)):
+    b = []
+    for bit in range(0,n):
+        if (i & (1<< bit)):
+            b.append(a[bit])
+    subset.append(b)
+print(subset) 
+
+
+
+
+
+
+### Perfix_sum of the Array with queres "Sum of Query II"
+def querySum( n, arr, q, queries):
+    prefix_sum = [0] * (n + 1)    
+    for i in range(1, n + 1):
+        prefix_sum[i] = prefix_sum[i - 1] + arr[i - 1]
+    
+    result = []      
+    for i in range(q):
+        l = queries[2 * i]
+        r = queries[2 * i + 1]
+        sum_lr = prefix_sum[r] - prefix_sum[l - 1]
+        result.append(sum_lr)
+        
+    print(result)
+
+n = 4
+arr = [1, 2, 3, 4]
+q = 2
+queries = [1, 4, 2, 3]
+# querySum(n, arr, q, queries)  -----   [10, 5]
+
+
+
+### Prime Factors of the given number
+def PrimeFactors(num):
+    lst  = []
+    factor = 2
+    while (num >= 2):
+        if (num % factor == 0):
+            lst.append(factor)
+            num = num / factor
+        else:
+            factor += 1
+    lst.sort()
+    return lst
+# print(PrimeFactors(125))  ###[5,5,5]
+# print(PrimeFactors(136))  ###[2,2,2,17]
+
+
+
+### Factors of the Number 
+def kThSmallestFactor(num):
+    factors = []
+
+    for i in range(1, int(num**0.5) + 1):
+        if num % i == 0:
+            factors.append(i)
+            if i != num // i:
+                factors.append(num // i)
+        print(factors)                        ### [1, 120, 2, 60, 3, 40, 4, 30, 5, 24, 6, 20, 8, 15, 10, 12]
+    
+    factors.sort()
+    print(factors)              ###  [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30, 40, 60, 120]
+# kThSmallestFactor(120)
+
+
+
+### Move all Zeos's to the end of the array
+def Move_Zero(arr):
+    slow = 0
+    for fast in range(len(arr)):
+        if arr[fast] != 0:
+            arr[slow] , arr[fast] = arr[fast] , arr[slow]
+            slow += 1
+    return arr
+# arr = [1, 2, 0, 4, 3, 0, 5, 0]
+# print(Move_Zero(arr))           ----   [1, 2, 4, 3, 5, 0, 0, 0]
+arr = [3,3,0,0,4]
+# print(Move_Zero(arr))       ----    [3, 3, 4, 0, 0]

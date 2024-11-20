@@ -20,7 +20,6 @@ class LinkedList:
         return count                  # Return the count of nodes
 
 
-
     def display(self,head=None):
         current_node = self.head
         while current_node:
@@ -66,13 +65,12 @@ class LinkedList:
         current.next = new_node             #Previous element next element is the new_node
 
 
-
     def DeleteAtFront(self):
         if self.head is None:
             return
         current = self.head.next        # Point Current to the next node
         self.head = current             # Update the head to the next node
-    
+
 
     def DeleteAtEnd(self):
         if self.head is None:
