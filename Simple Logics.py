@@ -1,18 +1,18 @@
 ### Binary to Integer
-a1 = 100000100000
-count = 0
-while  a1 > 0:
-    count = (count * 2) + a1 % 10
-    a1 //= 10
-print("Binary ",a1 ," to Integer ",count)
+# a1 = 100000100000
+# count = 0
+# while  a1 > 0:
+#     count = (count * 2) + a1 % 10
+#     a1 //= 10
+# print("Binary ",a1 ," to Integer ",count)
 
 
 ### Integer to Binary
 # a2 = 2080
-a2 = 2
+# a2 = 2
 # a2 = 29
-b2 = bin(a2)[2:]
-print("Integer ",a2, " to Binary ",b2)
+# b2 = bin(a2)[2:]
+# print("Integer ",a2, " to Binary ",b2)
 
 
 ### Roman to Integer
@@ -79,17 +79,22 @@ def minCost(arr):
 ### Subsets of the Array   
 # a = [1,3,2]     -----   [[], [1], [3], [1, 3], [2], [1, 2], [3, 2], [1, 3, 2]]
 # a = [1,2,3,4]    -----   [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3], [4], [1, 4], [2, 4], [1, 2, 4], [3, 4], [1, 3, 4], [2, 3, 4], [1, 2, 3, 4]]
-a = [1]
-n = len(a)
-subset = []
-for i in range(0,(1<<n)):
-    b = []
-    for bit in range(0,n):
-        if (i & (1<< bit)):
-            b.append(a[bit])
-    subset.append(b)
-print(subset) 
-
+# a = [12,28,83,4,25,26,25,2,25,25,25,12]
+# a.sort()
+# n = len(a)
+# subset = []
+# for i in range(0,(1<<n)):
+#     b = []
+#     for bit in range(0,n):
+#         if (i & (1<< bit)):
+#             b.append(a[bit])
+#     subset.append(b)
+# target = 213 
+# lst = []
+# for x in subset:
+#     if sum(x) == 213:
+#         lst.append(len(x))
+# print(lst)
 
 
 
@@ -100,14 +105,12 @@ def querySum( n, arr, q, queries):
     prefix_sum = [0] * (n + 1)    
     for i in range(1, n + 1):
         prefix_sum[i] = prefix_sum[i - 1] + arr[i - 1]
-    
     result = []      
     for i in range(q):
         l = queries[2 * i]
         r = queries[2 * i + 1]
         sum_lr = prefix_sum[r] - prefix_sum[l - 1]
         result.append(sum_lr)
-        
     print(result)
 
 n = 4
@@ -138,7 +141,6 @@ def PrimeFactors(num):
 ### Factors of the Number 
 def kThSmallestFactor(num):
     factors = []
-
     for i in range(1, int(num**0.5) + 1):
         if num % i == 0:
             factors.append(i)
@@ -162,5 +164,16 @@ def Move_Zero(arr):
     return arr
 # arr = [1, 2, 0, 4, 3, 0, 5, 0]
 # print(Move_Zero(arr))           ----   [1, 2, 4, 3, 5, 0, 0, 0]
-arr = [3,3,0,0,4]
+# arr = [3,3,0,0,4]
 # print(Move_Zero(arr))       ----    [3, 3, 4, 0, 0]
+
+
+### Maximum Subarray Sum using Kadane's Algorithm
+arr = [2, 3, -8, 7, -1, 2, 3]
+res = arr[0]
+end = arr[0]
+for i in range(1,len(arr)):
+    end = max(arr[i] , end+arr[i])      ###  5 -3 7 6 8 11 
+    res = max(res , end)                ###  5 5 7 7 8 11 
+
+print(max(res,end))    ###  11
