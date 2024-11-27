@@ -56,39 +56,39 @@
 
 
 ### Robot Movements for the position in the grid based on Right and Left moves with the Directions(N,E,S,W)
-# grid_x , grid_y = 3 , 3
-# # grid_x , grid_y = 3 , 4
-# x , y , facing = 2 , 2 , 'E'
-# ins = ['R','M','L','M','L','M']
-# # ins = ['R','M','L','M','L','M','R','M']
-# output_string = ""
-# def next_facing(curr_facing , move):
-#     directions = {'N':['W','E'] , 'S' :['E' , 'W'] , 'W' : ['S', 'N'] , 'E' : ['N' , 'S']}
-#     if move == 'R':
-#         return directions.get(curr_face)[1]
-#     else:
-#         return directions.get(curr_face)[0]
-# curr_x , curr_y , curr_face = x , y , facing
-# for x in ins:
-#     if x == 'R' or x == 'L':
-#         curr_face = next_facing(curr_face , x)
-#         continue
-#     elif x == 'M':
-#         if curr_face == 'N':
-#             i , j = 0 , 1
-#         elif curr_face == 'E':
-#             i , j = 1, 0
-#         elif curr_face == 'S':
-#             i , j = 0, -1
-#         elif curr_face == 'W':
-#             i , j = -1 , 0
-#         if (curr_x + i) > grid_x or (curr_y + j ) > grid_y or (curr_x + i ) <= 0 or (curr_y + j) <= 0 :
-#             # print(str(curr_x)+'-'+str(curr_y)+'-'+str(curr_face)+'-ER')
-#             output_string += "ER"
-#             break
-#         curr_x = curr_x + i
-#         curr_y = curr_y + j
-# print(str(curr_x)+'-'+str(curr_y)+'-'+str(curr_face) +'-'+ output_string)
+grid_x , grid_y = 3 , 3
+ins = ['R','M','L','M','L','M']
+# grid_x , grid_y = 3 , 4
+# ins = ['R','M','L','M','L','M','R','M']
+x , y , facing = 2 , 2 , 'E'
+output_string = ""
+def next_facing(curr_facing , move):
+    directions = {'N':['W','E'] , 'S' :['E' , 'W'] , 'W' : ['S', 'N'] , 'E' : ['N' , 'S']}
+    if move == 'R':
+        return directions.get(curr_face)[1]
+    else:
+        return directions.get(curr_face)[0]
+curr_x , curr_y , curr_face = x , y , facing
+for x in ins:
+    if x == 'R' or x == 'L':
+        curr_face = next_facing(curr_face , x)
+        continue
+    elif x == 'M':
+        if curr_face == 'N':
+            i , j = 0 , 1
+        elif curr_face == 'E':
+            i , j = 1, 0
+        elif curr_face == 'S':
+            i , j = 0, -1
+        elif curr_face == 'W':
+            i , j = -1 , 0
+        if (curr_x + i) > grid_x or (curr_y + j ) > grid_y or (curr_x + i ) <= 0 or (curr_y + j) <= 0 :
+            # print(str(curr_x)+'-'+str(curr_y)+'-'+str(curr_face)+'-ER')
+            output_string += "-ER"
+            break
+        curr_x = curr_x + i
+        curr_y = curr_y + j
+print(str(curr_x)+'-'+str(curr_y)+'-'+str(curr_face) + output_string)
 
 
 
@@ -114,24 +114,20 @@
 
 
 ###  Minimize the maximum difference between the heights
-def getMinDiff(arr, k):
-    n = len(arr)
-    arr.sort()                      ###  [4, 6, 10, 12, 15, 17] 
-
-    res = arr[n - 1] - arr[0]       ### res = 13
-    for i in range(1, len(arr)):
-        if arr[i] - k < 0:
-            continue
-
-        minH = min(arr[0] + k, arr[i] - k)             ###  0 4 6 9 10 
-        maxH = max(arr[i - 1] + k, arr[n - 1] - k)     ###  11 12 16 18 21  
-        res = min(res, maxH - minH)                    ### 11 8 8 8 8
-
-    return res
-
+# def getMinDiff(arr, k):
+#     n = len(arr)
+#     arr.sort()                      ###  [4, 6, 10, 12, 15, 17] 
+#     res = arr[n - 1] - arr[0]       ### res = 13
+#     for i in range(1, len(arr)):
+#         if arr[i] - k < 0:
+#             continue
+#         minH = min(arr[0] + k, arr[i] - k)             ###  0 4 6 9 10 
+#         maxH = max(arr[i - 1] + k, arr[n - 1] - k)     ###  11 12 16 18 21  
+#         res = min(res, maxH - minH)                    ### 11 8 8 8 8
+#     return res
 # k = 3
 # arr = [3, 9, 12, 16, 20]      ### 11
-k = 6
-arr = [12, 6, 4, 15, 17, 10]    ### 8
-ans = getMinDiff(arr, k)   
-print(ans)
+# k = 6
+# arr = [12, 6, 4, 15, 17, 10]    ### 8
+# ans = getMinDiff(arr, k)   
+# print(ans)

@@ -76,6 +76,7 @@ def minCost(arr):
     return count 
 
 
+# import math
 ### Subsets of the Array   
 # a = [1,3,2]     -----   [[], [1], [3], [1, 3], [2], [1, 2], [3, 2], [1, 3, 2]]
 # a = [1,2,3,4]    -----   [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3], [4], [1, 4], [2, 4], [1, 2, 4], [3, 4], [1, 3, 4], [2, 3, 4], [1, 2, 3, 4]]
@@ -89,7 +90,6 @@ def minCost(arr):
 #         if (i & (1<< bit)):
 #             b.append(a[bit])
 #     subset.append(b)
-# target = 213 
 # lst = []
 # for x in subset:
 #     if sum(x) == 213:
@@ -112,7 +112,6 @@ def querySum( n, arr, q, queries):
         sum_lr = prefix_sum[r] - prefix_sum[l - 1]
         result.append(sum_lr)
     print(result)
-
 n = 4
 arr = [1, 2, 3, 4]
 q = 2
@@ -168,6 +167,7 @@ def Move_Zero(arr):
 # print(Move_Zero(arr))       ----    [3, 3, 4, 0, 0]
 
 
+
 ### Maximum Subarray Sum using Kadane's Algorithm
 arr = [2, 3, -8, 7, -1, 2, 3]
 res = arr[0]
@@ -177,3 +177,14 @@ for i in range(1,len(arr)):
     res = max(res , end)                ###  5 5 7 7 8 11 
 
 print(max(res,end))    ###  11
+
+
+
+### Find the Single Digit Sum of a Number.
+def findSingle(n):
+    if n == 0:
+        return 0
+    return 1 + (n - 1) % 9
+# n = 5674                    # 4
+n = 1234                    # 1
+# print(findSingle(n))
