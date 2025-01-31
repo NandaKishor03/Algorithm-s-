@@ -122,6 +122,7 @@
 #     return count
 
 
+
 ### Mirror Tree Logic   ----  GFG
 # def Mirror(self,root):
 #         if root is None:
@@ -191,6 +192,7 @@
 #     return head
 
 
+
 ###  Rotate and delete ----- GFG
 # arr = [1, 2, 3, 4, 5, 6]
 # a = len(arr)
@@ -249,3 +251,44 @@ def next_permutation(arr):
 #     q.append(root)
 #     while root:
 #         if 
+
+
+
+### LEETCODE CanPlaceFlower
+# def CanPlaceFlower(flowerbed , n):
+#     total = 0
+#     prev = -2
+#     for i in range(len(flowerbed)):
+#         if flowerbed[i]:
+#             total += (i - prev - 2) // 2
+#             prev = i
+#     total += (len(flowerbed) - prev - 1) // 2
+#     print(total >= n)
+
+# flowerbed = [1,0,0,0,1]
+# n = 1
+# CanPlaceFlower(flowerbed,n)
+
+
+
+### Aanagrams --- Checking if two string are Anagrams of each other or Not
+# MAX_CHAR = 26
+
+# def areAnagrams(s1, s2):
+#     freq = [0] * MAX_CHAR
+    
+#     for ch in s1:
+#         freq[ord(ch) - ord('a')] += 1
+#     for ch in s2:
+#         freq[ord(ch) - ord('a')] -= 1
+    
+#     print(freq)
+#     for count in freq:
+#         if count != 0:
+#             return False
+            
+#     return True
+
+# s1 = "nanda"
+# s2 = "kishor"
+# print("true" if areAnagrams(s1, s2) else "false")

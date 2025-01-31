@@ -15,6 +15,22 @@
 # print("Integer ",a2, " to Binary ",b2)
 
 
+### Prime number or not
+# import math
+# def Prime(n):
+#   flag = True
+#   for i in range(2,math.ceil(n**0.5)):
+#       if n % i == 0:
+#           flag = False
+#           break
+#   if flag == True: 
+#       print("Prime")
+#   else:
+#       print("Not a Prime")
+#Prime(9)
+#Prime(11)
+
+
 ### Roman to Integer
 arr = "MCMXVII"
 def RomanToInteger(s):
@@ -62,8 +78,10 @@ def mirror(root):
 # print(s)  # Output: "0"
 
 
+
 ### If you want to sort the array for every iteration of the loop then use "HEAPQ"
 # Example - Minimum cost of ropes
+import heapq
 def minCost(arr):
     heapq.heapify(arr)
     count = 0
@@ -188,3 +206,150 @@ def findSingle(n):
 # n = 5674                    # 4
 n = 1234                    # 1
 # print(findSingle(n))
+
+
+
+### Valid Parentheses
+# def is_valid(s: str) -> bool:
+#     stack = []
+#     check = True
+#     for char in s:
+#         if char in '({[':
+#             stack.append(char)
+#         else:
+#             if stack:
+#                 t = stack.pop()
+#                 if (char == ')' and t != '(') or (char == '}' and t != '{') or (char == ']' and t != '['):
+#                     check = False
+#                     break
+#             else:
+#                 check = False
+#                 break
+#     return (len(stack) == 0 and check)
+# print( is_valid("(({}]))"))
+
+
+
+# Number steps to Convert the number to 1 using:
+# -> Divide the number by the factors (apart from 1 and n)
+# ->Substract 1 from the number
+# n = 90    # 2
+# n = 91    # 3
+# n = 50    # 2
+# if n>=4:
+#     if n%2 == 0:
+#         print(2)
+#     else:
+#         print(3)
+# else:
+#     print(n-1)
+
+
+### Best Grade
+# find the Maximized garde with lexographically smallest character grade to the Pth Index in atmost k Swaps
+def best(arr,p,k):
+# Method - 1
+    # p -= 1
+    # best_grade = arr[p-k:p+k]
+    # print(min(best_grade))
+# Method - 2
+    char = arr[p-1]
+    for i in range(p,min(len(arr),p+k)):
+        if char > arr[i]:
+            char = arr[i]
+    for i in range(max(0,p-k-1),p-1):
+        if char > arr[i]:
+            char = arr[i]
+    print(char)
+# arr = "abffbcdehjfg"
+# p=3
+# k=4
+# best(arr,p,k)
+
+
+### Minimum no of key presses to get number
+# initail value 0
+# you can press [0,1,2,3,4,5,6,7,8,9,00]
+# if we press 00 the number will become
+def min_press(n):
+    i , keys = 0 , 0
+    while i < len(n):
+        if i < len(n) -1 and n[i] == '0' and n[i+1] =='0':
+            i += 2
+            keys += 1
+        else:
+             i += 1
+             keys += 1
+    print(keys)
+# min_press('100')
+# min_press('12300')
+# min_press('1020')
+# min_press('1001')
+
+
+### Longest Substring with Even Length
+# String contains numbers from 0 to 9
+# sum of the left k digits is equal to sum of the right k digits
+# else, print 0
+# def sum(s):
+#     res = 0
+#     for x in s:
+#         res += int(x)
+#     return res
+
+# def Even_length(arr):
+#     n = len(arr)
+#     maxlen = 0
+#     for i in range(n):
+#         for j in range(i+2,n+1,2):
+#             sub_string = arr[i:j]
+#             t = len(sub_string)
+#             left , right = sub_string[:t//2] , sub_string[t//2:]
+#             if t%2 == 0 and sum(left) == sum(right):
+#                 maxlen = max(maxlen,t)
+#     print(maxlen)
+# arr = '123123'
+# arr = '1234'
+# Even_length(arr)
+
+
+### Longest Common Perfix
+def longestCommonPrefix(strs):
+    if not strs:
+        return None
+    perfix = strs[0]
+    for s in strs[1:]:
+        while not s.startswith(perfix):
+            perfix = perfix[:-1]
+            if not perfix:
+                return None
+    return perfix
+
+strs = ["dog","racecar","car"]
+strs = ["flower","flow","flight"]
+# print(longestCommonPrefix(strs))
+
+
+### Find K Pairs with Smallest Sums
+# Define a pair (u, v) which consists of one element from the first array and one element from the second array.
+# Return the Smallest sum
+import heapq
+def kSmallestPairs(nums1, nums2):
+    if not nums1 and not nums2:
+        return []
+    heap = []
+    for i in range(min(k,len(nums1))):
+        heapq.heappush(heap,(nums1[i] + nums2[0] , i , 0))
+    result = []
+    while heap and len(result) < k:
+        curr_sum , i , j = heapq.heappop(heap)
+        result.append([nums1[i],nums2[j]])
+        if j+1 < len(nums2):
+            heapq.heappush(heap,(nums1[i] + nums2[j+1] , i , j+1))
+    return result
+
+nums1 = [1,7,11]
+nums2 = [2,4,6]
+k = 3
+# nums1 = [1,1,2], nums2 = [1,2,3], k = 2
+print(kSmallestPairs(nums1,nums2))          #output : [[1, 2], [1, 4], [1, 6]]

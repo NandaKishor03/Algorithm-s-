@@ -20,10 +20,10 @@ class LinkedList:
         return count                  # Return the count of nodes
 
 
-    def display(self,head=None):
+    def display(self):
         current_node = self.head
         while current_node:
-            print(current_node.data, end=" -> ")
+            print(current_node.data, end=" -> " if current_node.next else "\n")
             current_node = current_node.next
         print("None")               # Indicate the end of the list
 
