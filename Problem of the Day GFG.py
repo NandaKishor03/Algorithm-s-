@@ -244,13 +244,6 @@ def next_permutation(arr):
 # print(" ".join(map(str, arr)))
 
 
-### Level Order Traversal of the Binary Tree
-
-# def level_order(root):
-#     q = []
-#     q.append(root)
-#     while root:
-#         if 
 
 
 

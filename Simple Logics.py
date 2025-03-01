@@ -50,6 +50,15 @@ def RomanToInteger(s):
             i += 1
     return sum(lst)
 
+### Reverse a Array
+# arr = [2,3,4,5,3,5,6,7,0]
+# n = len(arr)
+# i = 0
+# while i < n//2 :
+#     arr[i] , arr[n-i-1] = arr[n-i-1] , arr[i]
+#     i += 1
+# print(arr) 
+
 
 ### Mirror Tree Logic
 def mirror(root):
@@ -352,4 +361,44 @@ nums1 = [1,7,11]
 nums2 = [2,4,6]
 k = 3
 # nums1 = [1,1,2], nums2 = [1,2,3], k = 2
-print(kSmallestPairs(nums1,nums2))          #output : [[1, 2], [1, 4], [1, 6]]
+# print(kSmallestPairs(nums1,nums2))          #output : [[1, 2], [1, 4], [1, 6]]
+
+
+### Continuous Subarray Sum of the Number
+# Number = 91
+#  -> 45 46 
+#  -> 10 11 12 13 14 15 16 
+#  -> 1 2 3 4 5 6 7 8 9 10 11 12 13 
+def sum_numder(target):
+    k = 2
+    while True:
+        n = (target - (k-1)*k/2)/k
+        if n <= 0:
+            break
+        if n - int(n) == 0:
+            n = int(n)
+            for i in range(n,n+k):
+                print(i,end=" ")
+            print()
+        k += 1
+
+sum_numder(91)
+
+
+
+
+### Find the Smallest Number
+# Find the smallest number that can be formed by removing k digits from the number
+# def removeKdigits(num, k):
+#     stack = []
+#     for digit in num:
+#         while k and stack and stack[-1] > digit:
+#             stack.pop()
+#             k -= 1
+#         stack.append(digit)
+#     stack = stack[:-k] if k else stack
+#     return "".join(stack).lstrip('0') or "0"
+# num = "1432219"
+# k = 3
+# print(removeKdigits(num,k))
+
