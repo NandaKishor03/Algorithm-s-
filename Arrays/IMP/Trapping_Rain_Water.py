@@ -1,4 +1,4 @@
-def trap(self, height: List[int]) -> int:
+def trap(height):
     N = len(height)
     if N == 0:
         return 0
@@ -44,3 +44,8 @@ print("Trapped water:", trap(height))  # Output: 6
 # Step 3: Calculate Water at Each Index:
 # For each index i, water trapped = min(left[i], right[i]) - height[i]
 # Add this value to total_water
+
+
+# Time and Space Complexity:
+# Time: O(n) – Three passes over the list.
+# Space: O(n) – Two arrays (left and right).
